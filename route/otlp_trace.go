@@ -25,6 +25,10 @@ import (
 	trace "github.com/honeycombio/refinery/internal/opentelemetry-proto-gen/trace/v1"
 )
 
+func (router *Router) rejectOTLPgRPCOverHttp(w http.ResponseWriter, req *http.Request) {
+	router.handlerReturnWithError(w, ErrOTLPGRPCOverHTTP, errors.New("received OTLP/gRPC request over HTTP"))
+}
+
 func (router *Router) postOTLP(w http.ResponseWriter, req *http.Request) {
 	defer req.Body.Close()
 	contentType := req.Header.Get("content-type")
