@@ -1,4 +1,4 @@
-module github.com/jirs5/tracing-proxy
+module github.com/sujithapallapothu/tracing-proxy
 
 go 1.16
 
